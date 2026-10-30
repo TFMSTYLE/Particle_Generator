@@ -4,7 +4,7 @@
 bl_info = {
     "name": "Particle",
     "author": "The French Monkey",
-    "version": (1, 0, 1),
+    "version": (1, 0, 2),
     "blender": (4, 2, 0),
     "location": "View3D > Sidebar > Particle",
     "description": "Generate parametric particle",
@@ -14,6 +14,11 @@ bl_info = {
 
 import bpy, math, random
 from math import sin, cos, tau
+
+try:
+    from . import relay_updater
+except ImportError:  # the Addon Collection has its own updates
+    relay_updater = None
 
 # ------------------------------------------------------------------------
 # Geometry Nodes Instancer
@@ -265,6 +270,8 @@ class VIEW3D_PT_particle_generator(bpy.types.Panel):
     bl_category = "Particle"
 
     def draw(self, context):
+        if relay_updater:
+            relay_updater.draw(self.layout)
         layout = self.layout
         p = context.scene.pgen_props
         o = context.object
@@ -310,10 +317,14 @@ classes = (
 )
 
 def register():
+    if relay_updater:
+        relay_updater.register("blender-particle")
     for c in classes: bpy.utils.register_class(c)
     bpy.types.Scene.pgen_props = bpy.props.PointerProperty(type=PGProperties)
 
 def unregister():
+    if relay_updater:
+        relay_updater.unregister()
     for c in reversed(classes): bpy.utils.unregister_class(c)
     del bpy.types.Scene.pgen_props
 
