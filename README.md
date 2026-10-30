@@ -3,7 +3,7 @@
 ![particle-thumb](https://github.com/user-attachments/assets/42445ce0-b0a9-47d2-a2cd-6e6c6566c193)
 
 **Author:** The French Monkey (TFMSTYLE)  
-**Version:** 1.0.0  
+**Version:** 1.0.1  
 
 ---
 
@@ -107,3 +107,21 @@ Automatically applies instancing, scaling variation, and a default particle mate
 - The add-on uses a Geometry Nodes modifier to instance mesh particles efficiently.  
 - A default material (`ParticleMaterial`) is automatically created and assigned.  
 - Ideal for procedural scattering, cosmic visuals, or abstract compositions.
+
+---
+
+## Install
+
+Needs Blender 4.2 or later. Get the zip from [tfmstyle.com](https://tfmstyle.com), then in Blender open Edit > Preferences > Get Extensions, open the menu at the top right and pick Install from Disk.
+
+To build the zip yourself, run this in the repo folder:
+
+```bash
+blender --command extension build
+```
+
+---
+
+## License
+
+GPL 3.0 or later. See [LICENSE](LICENSE).
