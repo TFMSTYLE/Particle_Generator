@@ -1,7 +1,7 @@
 schema_version = "1.0.0"
 
 id = "tfmstyle_particle"
-version = "1.0.2"
+version = "1.0.3"
 name = "TFMSTYLE - Particle"
 tagline = "Generate parametric particle"
 maintainer = "The French Monkey"
